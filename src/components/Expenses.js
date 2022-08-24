@@ -1,18 +1,12 @@
-import Card from "./Card";
+import React from "react";
 import ExpenseItem from "./ExpenseItem";
 import "./Expenses.css";
+import Card from "./UI/Card";
 
-const Expenses = () => {
-  const expenses = [
-    { date: new Date(2022, 7, 23), title: "Car", amount: 255 },
-    { date: new Date(2022, 5, 22), title: "Bike", amount: 230 },
-    { date: new Date(2022, 9, 20), title: "Truck", amount: 200 },
-    { date: new Date(2022, 2, 3), title: "Jeep", amount: 100 },
-  ];
-
+const Expenses = (props) => {
   return (
     <Card className="expenses">
-      {expenses.map((expense, idx) => (
+      {props.expenses.map((expense, idx) => (
         <ExpenseItem
           title={expense.title}
           amount={expense.amount}
