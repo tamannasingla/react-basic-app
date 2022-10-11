@@ -7,7 +7,7 @@ import Card from "./UI/Card";
 const Expenses = (props) => {
   return (
     <Card className="expenses">
-      <ExpenseFilter />
+      <ExpenseFilter onYearFilterExpense={props.onFilterExpense} />
       {props.expenses.map((expense, idx) => (
         <ExpenseItem
           title={expense.title}
