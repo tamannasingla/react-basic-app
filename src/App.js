@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import AddExpense from "./components/AddExpense/AddExpense";
 import Expenses from "./components/Expenses/Expenses";
 
@@ -9,14 +9,6 @@ const App = () => {
     { date: new Date(2020, 9, 20), title: "Truck", amount: 200 },
     { date: new Date(2022, 2, 3), title: "Jeep", amount: 100 },
   ]);
-  const [filter, setFilter] = useState({
-    filteredExpenses: [],
-    selectedYear: 2022,
-  });
-
-  useEffect(() => {
-    filterExpenseHandler(filter.selectedYear);
-  }, [expenses]);
 
   const addExpenseHandler = (expense) => {
     if (
@@ -30,26 +22,10 @@ const App = () => {
     }
   };
 
-  const filterExpenseHandler = (selectedYear) => {
-    setFilter((prevState) => {
-      return {
-        ...prevState,
-        selectedYear,
-        filteredExpenses: expenses.filter((expense) => {
-          return expense.date.getFullYear() === Number(selectedYear);
-        }),
-      };
-    });
-  };
-
   return (
     <div>
       <AddExpense onAddExpense={addExpenseHandler} />
-      <Expenses
-        selected={filter.selectedYear}
-        expenses={filter.filteredExpenses}
-        onFilterExpense={filterExpenseHandler}
-      />
+      <Expenses expenses={expenses} />
     </div>
   );
 };
