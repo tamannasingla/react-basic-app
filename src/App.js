@@ -10,15 +10,12 @@ const App = () => {
     { date: new Date(2022, 2, 3), title: "Jeep", amount: 100 },
   ]);
   const [filter, setFilter] = useState({
-    enabled: false,
     filteredExpenses: [],
-    option: "All",
+    selectedYear: 2022,
   });
 
   useEffect(() => {
-    if (filter.enabled) {
-      filterExpenseHandler(filter.option);
-    }
+    filterExpenseHandler(filter.selectedYear);
   }, [expenses]);
 
   const addExpenseHandler = (expense) => {
@@ -33,18 +30,14 @@ const App = () => {
     }
   };
 
-  const filterExpenseHandler = (option) => {
+  const filterExpenseHandler = (selectedYear) => {
     setFilter((prevState) => {
       return {
         ...prevState,
-        enabled: true,
-        option,
-        filteredExpenses:
-          option === "All"
-            ? expenses
-            : expenses.filter((expense) => {
-                return expense.date.getFullYear() === Number(option);
-              }),
+        selectedYear,
+        filteredExpenses: expenses.filter((expense) => {
+          return expense.date.getFullYear() === Number(selectedYear);
+        }),
       };
     });
   };
@@ -53,7 +46,8 @@ const App = () => {
     <div>
       <AddExpense onAddExpense={addExpenseHandler} />
       <Expenses
-        expenses={filter.enabled ? filter.filteredExpenses : expenses}
+        selected={filter.selectedYear}
+        expenses={filter.filteredExpenses}
         onFilterExpense={filterExpenseHandler}
       />
     </div>

@@ -3,7 +3,7 @@ import "./ExpenseFilter.css";
 const ExpenseFilter = (props) => {
   const options = () => {
     const currentYear = new Date().getFullYear();
-    let values = ["All"];
+    let values = [];
     for (let yr = currentYear - 2; yr <= currentYear; yr++) {
       values.push(yr);
     }
@@ -18,7 +18,7 @@ const ExpenseFilter = (props) => {
     <div className="expense-filter">
       <div className="expense-filter__control">
         <label className="expense-filter label">Filter by year</label>
-        <select onChange={yearChangeHandler}>
+        <select value={props.selected} onChange={yearChangeHandler}>
           {options().map((opt) => (
             <option value={opt}>{opt}</option>
           ))}

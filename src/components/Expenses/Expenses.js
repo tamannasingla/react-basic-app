@@ -7,7 +7,10 @@ import "./Expenses.css";
 const Expenses = (props) => {
   return (
     <Card className="expenses">
-      <ExpenseFilter onYearFilterExpense={props.onFilterExpense} />
+      <ExpenseFilter
+        onYearFilterExpense={props.onFilterExpense}
+        selected={props.selected}
+      />
       {props.expenses.map((expense, idx) => (
         <ExpenseItem
           title={expense.title}
