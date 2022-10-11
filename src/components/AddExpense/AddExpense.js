@@ -1,5 +1,5 @@
+import ExpenseForm from "../ExpenseForm/ExpenseForm";
 import "./AddExpense.css";
-import ExpenseForm from "./ExpenseForm";
 
 const AddExpense = (props) => {
   return (

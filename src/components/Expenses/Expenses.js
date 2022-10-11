@@ -1,8 +1,8 @@
 import React from "react";
-import ExpenseFilter from "./ExpenseFilter";
-import ExpenseItem from "./ExpenseItem";
+import ExpenseFilter from "../ExpenseFilter/ExpenseFilter";
+import ExpenseItem from "../ExpenseItem/ExpenseItem";
+import Card from "../UI/Card";
 import "./Expenses.css";
-import Card from "./UI/Card";
 
 const Expenses = (props) => {
   return (
