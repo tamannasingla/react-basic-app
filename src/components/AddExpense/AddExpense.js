@@ -5,19 +5,20 @@ import "./AddExpense.css";
 const AddExpense = (props) => {
   const [formModel, setFormModel] = useState(false);
 
-  const formHandler = (open) => {
-    setFormModel(open);
+  const openForm = () => {
+    setFormModel(true);
+  };
+
+  const closeForm = () => {
+    setFormModel(false);
   };
 
   return (
     <div className="new-expense">
       {formModel ? (
-        <ExpenseForm
-          onSaveExpense={props.onAddExpense}
-          onFormStateChange={formHandler}
-        />
+        <ExpenseForm onSaveExpense={props.onAddExpense} onCancel={closeForm} />
       ) : (
-        <button onClick={() => formHandler(true)}>Add Expense</button>
+        <button onClick={openForm}>Add New Expense</button>
       )}
     </div>
   );
